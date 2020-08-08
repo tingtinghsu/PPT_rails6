@@ -1,7 +1,7 @@
 <h1>看板列表</h1>
 <ul>
 <% @boards.each do |board|%>
-  <li><%= board.title %></li>
+  <li><%= link_to board.title, board_path(board) %></li>
 <% end %>
 </ul>
 <%= link_to '新增看板', new_board_path %>
