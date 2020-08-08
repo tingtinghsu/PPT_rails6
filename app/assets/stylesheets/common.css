@@ -1,3 +1,10 @@
 body {
   margin-left: 10px;
 }
+
+.navbar-brand, .nav-link {
+  color: darkblue;
+}
+.navbar-brand:hover {
+  color: darkblue;
+}
