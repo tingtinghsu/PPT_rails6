@@ -1,7 +1,7 @@
 class BoardsController < ApplicationController
   before_action :find_board, only: [:show, :edit, :update, :destroy]
   def index
-    @boards = Board.all
+    @boards = Board.where(deleted_at: nil)
   end
 
   def new
@@ -33,6 +33,7 @@ class BoardsController < ApplicationController
 
   def destroy
     @board.destroy
+    #@board.update(deleted_at: Time.now)
     redirect_to boards_path, notice: '刪除成功！'    
   end
 
