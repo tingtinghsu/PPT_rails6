@@ -1,0 +1,31 @@
+<section class="post">
+<ul class="header">
+  <li>
+    <div>
+      <span>作者</span>
+      <span><%= @post %></span>
+    </div>
+  </li>
+  <li>
+    <div>
+      <span>看板</span>
+      <span><%= @post.board.title %></span>
+    </div>
+  </li>
+  <li>
+    <span>標題</span>
+    <span><%= @post.title %></span>
+  </li>
+  <li>
+    <span>時間</span>
+    <span><%= @post.created_at %></span>
+  </li>
+</ul>
+<hr>
+
+<p><%= @post.content %></p>
+</section>
+
+<div class="main-link justify-content-center">
+  <%= link_to "返回#{@post.board.title}看板", boards_path(@post.board.id) %>
+</div>

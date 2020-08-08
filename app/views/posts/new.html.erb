@@ -1,0 +1,10 @@
+<h1 class="mr-3">新增文章</h1>
+
+<%= form_with(model: @post, url: board_posts_path) do |f| %>
+  <%= f.label :title, "文章名稱" %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content, "文章內容" %>
+  <%= f.text_area :content %><br>
+  <%= f.submit "送出" %>
+<% end %>

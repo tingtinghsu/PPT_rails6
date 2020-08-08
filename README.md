@@ -1,24 +1,7 @@
-# README
+# 使用套件
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[Hirb](https://github.com/cldwalker/hirb)
+  - rails c: `require 'Hirb'`, `Hirb.enable`
+[Paranoia](https://github.com/rubysherpas/paranoia)
+  - Model: `acts_as_paranoid`
+  - rails c: `Board.with_deleted`

@@ -1,1 +1,27 @@
-<%= @board.title %>
+<div class="main-title justify-content-center">
+  <h1><%= @board.title%></h1>
+</div>
+
+
+<table class="table table-sm">
+  <thead>
+    <th scope="col" class="">文章名稱</th>
+    <th scope="col" class=""></th>
+    <th scope="col" class=""></th>
+  </thead>
+
+  <tbody>
+    <% @board.posts.each do |post| %>  
+    <tr>
+      <td class=""><%= link_to post.title, post_path(post) %></td>
+      <%# byebug %>
+      <td><%= link_to "編輯", edit_post_path(post)%></td>
+      <td><%= link_to "刪除", post_path(post), method: 'delete', data: { confirm: '確認刪除?' }  %></td>
+    </tr>
+    <% end %> 
+  </tbody>
+</table>
+
+<div class="main-link justify-content-center">
+  <%= link_to '新增文章', new_board_post_path(@board) %>
+</div>

@@ -1,0 +1,14 @@
+<div class="row main-title justify-content-center">
+  <h1>編輯文章</h1>
+</div>
+
+<div class="row main-area justify-content-center">
+  <%= form_with(model: @post, url: post_path, method: 'PUT', local: true) do |f| %>
+    <%= f.label :title, "文章名稱", class:"txt" %>
+    <%= f.text_field :title %>
+
+    <%= f.label :content, "文章說明", class:"txt" %>
+    <%= f.text_area :content %><br>
+    <%= f.submit "送出" %>
+  <% end %>
+</div>
