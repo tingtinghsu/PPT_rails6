@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :board_masters
   has_many :boards, through: :board_masters
 
+  has_many :posts
+
   # 密碼只能加密一次，不能放在before_save, 不然變成每次更新、存檔後都會再加密一次
   before_create :encrypt_password
   #類別方法
@@ -13,6 +15,10 @@ class User < ApplicationRecord
       find_by(account: params[:account],
               password: add_salt(params[:password]))
     end
+  end
+
+  def self.has_this_id?(id)
+    one?{ |user| user.id == id }
   end
 
   private

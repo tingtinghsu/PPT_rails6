@@ -20,6 +20,8 @@ class BoardsController < ApplicationController
   end
 
   def show
+    # 解決N+1問題，除了找@board也列出@posts
+    #@posts = @board.posts.includes(:user)
   end
 
   def edit

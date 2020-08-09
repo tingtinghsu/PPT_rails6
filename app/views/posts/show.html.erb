@@ -3,7 +3,7 @@
   <li>
     <div>
       <span>作者</span>
-      <span><%= @post %></span>
+      <span><%= @post.display_author %></span>
     </div>
   </li>
   <li>
@@ -31,5 +31,5 @@
 </section>
 
 <div class="main-link justify-content-center">
-  <%= link_to "返回#{@post.board.title}看板", boards_path(@post.board.id) %>
+  <%= link_to "返回#{@post.board.title}看板", board_path(@post.board.id) %>
 </div>

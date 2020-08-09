@@ -18,8 +18,13 @@
     <tr>
       <td class=""><%= link_to post.title, post_path(post) %></td>
       <%# byebug %>
-      <td><%= link_to "編輯", edit_post_path(post)%></td>
-      <td><%= link_to "刪除", post_path(post), method: 'delete', data: { confirm: '確認刪除?' }  %></td>
+      <% if authorized_user_for_post?(post.user.id) %>
+        <td><%= link_to "編輯", edit_post_path(post) %></td>
+        <td><%= link_to "刪除", post_path(post), method: 'delete', data: { confirm: '確認刪除?' } %></td>
+      <% else %>
+        <td></td>
+        <td></td>
+      <% end %>
     </tr>
     <% end %> 
   </tbody>

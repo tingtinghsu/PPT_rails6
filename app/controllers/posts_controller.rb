@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :find_board, only: [:new, :create, :show]
-  before_action :find_post, only: [:edit, :update, :destroy] 
+  before_action :find_current_user_post, only: [:edit, :update, :destroy] 
   def show
     @post = Post.find(params[:id])
   end
@@ -23,7 +23,8 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      redirect_to board_path(@post.board_id), notice: '文章更新成功'
+      # 回到原來那篇文章
+      redirect_to @post, notice: '文章更新成功'
     else
       render :edit
     end
@@ -41,10 +42,10 @@ class PostsController < ApplicationController
     @board = Post.find(params[:id]).board if params[:id]
   end
 
-  def find_post
-    @post = Post.find(params[:id])
+  def find_current_user_post
+    @post = current_user.posts.find(params[:id])
   end
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content).merge(user: current_user)
   end
 end

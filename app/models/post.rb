@@ -3,8 +3,17 @@ class Post < ApplicationRecord
   validates :serial, presence: true, uniqueness: true, allow_nil: true
 
   belongs_to :board, optional: true
+  belongs_to :user
 
   before_create :create_serial
+
+  def display_author
+    if user.nil?
+      "-"
+    else
+      user.account
+    end
+  end
 
   private
   def create_serial
