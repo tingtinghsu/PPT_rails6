@@ -1,9 +1,12 @@
 <div class="main-title justify-content-center">
   <h1><%= @board.title%></h1>
+    <div>
+      [ 版主：<%= display_bm(@board) %> ]
+    </div>
 </div>
 
 
-<table class="table table-sm">
+<table class="table table-sm my-1">
   <thead>
     <th scope="col" class="">文章名稱</th>
     <th scope="col" class=""></th>
