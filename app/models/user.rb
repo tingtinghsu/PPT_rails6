@@ -24,4 +24,6 @@ class User < ApplicationRecord
   def self.add_salt(password)
     Digest::SHA1.hexdigest("x#{password}y")
   end
+
+  private_class_method :add_salt
 end

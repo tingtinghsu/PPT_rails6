@@ -1,5 +1,7 @@
 class BoardsController < ApplicationController
   before_action :find_board, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+
   def index
     @boards = Board.where(deleted_at: nil)
   end
