@@ -7,22 +7,34 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">看板列表 <span class="sr-only">(current)</span></a>
+          <%= link_to ' 看板列表', boards_path, class: "nav-link fa fa-server p-2" %>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            我的最愛
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
-          </div>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="#">註冊/登入 <span class="sr-only">(current)</span></a>
-        </li>
+        <% if current_user %>  
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle fa fa-heart" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              我的最愛
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">我的看板</a>
+              <a class="dropdown-item" href="#">我的文章</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">我喜歡的作者</a>
+            </div>
+          </li>
+          <li class="nav-item active">
+            <%=link_to " Hi! #{current_user.account} 您好", boards_path, class: "nav-link fa fa-hand-peace-o"%>
+          </li> 
+          <li class="nav-item active">
+            <%= link_to '登出', sign_out_users_path, method: 'delete', class: "nav-link fa fa-sign-out" %>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to ' 註冊', sign_up_users_path, class: "nav-link fa fa-calculator" %>          
+          </li>
+          <li class="nav-item active">
+            <%= link_to ' 登入', sign_in_users_path, class: "nav-link fa fa-sign-in " %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </nav>
