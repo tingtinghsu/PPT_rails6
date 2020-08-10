@@ -1,1 +1,25 @@
 <h1>我的最愛</h1>
+
+<div class="row main-area justify-content-center">
+  <% if @boards.any? %>
+    <table class="table-sm">
+      <tbody>
+        <% @boards.each do |board| %>
+          <td class="text-center">
+            <li><%= link_to board.title, board_path(board) %></li>
+          </td>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p>
+      目前沒有喜歡任何看板
+    </p>
+  <% end %>
+
+</div>
+  
+
+<div class="row main-link justify-content-center">
+  <%= link_to "返回看板列表", boards_path %>
+</div>

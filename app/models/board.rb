@@ -6,4 +6,8 @@ class Board < ApplicationRecord
 
   has_many :board_masters
   has_many :users, through: :board_masters
+
+  def favorited_by?(u)
+    favorited_users.include?(u)
+  end
 end

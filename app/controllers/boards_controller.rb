@@ -1,5 +1,5 @@
 class BoardsController < ApplicationController
-  before_action :find_board, only: [:show, :edit, :update, :destroy]
+  before_action :find_board, only: [:favorite, :show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
@@ -44,7 +44,15 @@ class BoardsController < ApplicationController
   def favorite
     #current_user.favorited_boards << @board
     current_user.toggle_favorite_board(@board)
-    redirect_to favorites_board_path, notice: 'OK!'
+    # redirect_to favorites_path, notice: 'OK!'
+
+    # 找到favorite後，根據格式分發到不同地方
+    # 預設是回傳html
+    respond_to do |format|
+      format.html { redirect_to favorites_path, notice: 'OK!' }
+      format.json { render json: {status: @board.favorited_by?(current_user) } }
+      # @board.favorited
+    end
   end
 
   private

@@ -3,12 +3,16 @@
     <div>
       [ 版主：<%= display_bm(@board) %> ]
     </div>
+    <p class="m-1"  data-controller="heart" data-heart-board="<%= @board.id %>">
+      <%= link_to "加到我的最愛", favorite_board_path(@board), method: 'POST', class: "fa fa-heart" %> 
+        <button data-action="click->heart#favorite">
+          <i class="far fa-heart" data-target="heart.heart"></i>
+        </button>
+    </p>
 </div>
 
 <div class="row main-add-favorite justify-content-center">
-  <p>
-    <%= link_to "加到我的最愛", favorite_board_path(@board), method: 'POST' %>
-  </p>
+
 </div>
 
 <table class="table table-sm my-1">
@@ -35,6 +39,6 @@
   </tbody>
 </table>
 
-<div class="main-link justify-content-center">
+<div class="main-link justify-content-center m-2">
   <%= link_to '新增文章', new_board_post_path(@board) %>
 </div>

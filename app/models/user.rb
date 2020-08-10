@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments
 
+  has_many :favorite_boards
+  # 來源source 放model
+  has_many :favorited_boards, through: :favorite_boards, source: :board
+
   # 密碼只能加密一次，不能放在before_save, 不然變成每次更新、存檔後都會再加密一次
   before_create :encrypt_password
   #類別方法
