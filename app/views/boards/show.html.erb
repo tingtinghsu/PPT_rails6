@@ -5,6 +5,11 @@
     </div>
 </div>
 
+<div class="row main-add-favorite justify-content-center">
+  <p>
+    <%= link_to "加到我的最愛", favorite_board_path(@board), method: 'POST' %>
+  </p>
+</div>
 
 <table class="table table-sm my-1">
   <thead>

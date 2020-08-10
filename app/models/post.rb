@@ -4,7 +4,8 @@ class Post < ApplicationRecord
 
   belongs_to :board, optional: true
   belongs_to :user
-
+  has_many :comments
+  
   before_create :create_serial
 
   def display_author

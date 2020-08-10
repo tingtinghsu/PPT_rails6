@@ -29,7 +29,27 @@
 
 <p><%= @post.content %></p>
 </section>
+<hr>
+<div class="main-comment-title justify-content-center">
+  <b>留言區</b>
+</div>
 
-<div class="main-link justify-content-center">
+<div class="main-show-comment justify-content-center">
+  <% @comments.each do |comment| %>
+      <i><%= comment.id %></i>
+    <i><%= comment.content %></i><br>
+  <% end %>
+</div>
+
+<div class="main-create-comment justify-content-center">
+  <%= form_with(model:@comment, url: post_comments_path(@post)) do |f| %>
+    <%= f.text_field :content, placeholder: "請輸入您的留言" %>
+    <%= f.submit "送出" %>
+  <% end %>
+</div>
+
+
+
+<div class="main-link justify-content-center my-5">
   <%= link_to "返回#{@post.board.title}看板", board_path(@post.board.id) %>
 </div>

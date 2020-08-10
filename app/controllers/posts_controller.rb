@@ -1,8 +1,12 @@
 class PostsController < ApplicationController
   before_action :find_board, only: [:new, :create, :show]
   before_action :find_current_user_post, only: [:edit, :update, :destroy] 
+
   def show
     @post = Post.find(params[:id])
+    @comment = @post.comments.new
+    @comments = @post.comments.order(id: :desc)
+    #@comments = @post.comments
   end
   def new
     @post = @board.posts.new

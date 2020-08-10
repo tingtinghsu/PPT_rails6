@@ -41,6 +41,12 @@ class BoardsController < ApplicationController
     redirect_to boards_path, notice: '刪除成功！'    
   end
 
+  def favorite
+    #current_user.favorited_boards << @board
+    current_user.toggle_favorite_board(@board)
+    redirect_to favorites_board_path, notice: 'OK!'
+  end
+
   private
   def find_board
     @board = Board.find(params[:id])

@@ -1,8 +1,16 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "users#home"
+
+  resources :favorites, only: [:index]
+
   resources :boards do
-    resources :posts, shallow: true
+    member do
+      post :favorite
+    end
+    resources :posts, shallow: true do
+      resources :comments, shallow: true, only: [:create]
+    end
   end
 
   resources :users, only: [:create, :edit, :update] do
