@@ -4,7 +4,7 @@
       [ 版主：<%= display_bm(@board) %> ]
     </div>
     <p class="m-1"  data-controller="heart" data-heart-board="<%= @board.id %>">
-      <%= link_to "加到我的最愛", favorite_board_path(@board), method: 'POST', class: "fa fa-heart" %> 
+      <%#= link_to "加到我的最愛", favorite_board_path(@board), method: 'POST', class: "fa fa-heart" %> 
         <button data-action="click->heart#favorite">
           <i class="far fa-heart" data-target="heart.heart"></i>
         </button>
@@ -24,8 +24,8 @@
 
   <tbody>
     <% @board.posts.each do |post| %>  
-    <tr>
-      <td class=""><%= link_to post.title, post_path(post) %></td>
+    <tr data-controller="post" data-action="cat@window->post#something">
+      <td class=""><%= link_to post.title, post_path(post), data: { target: 'post.title'} %></td>
       <%# byebug %>
       <% if authorized_user_for_post?(post.user.id) %>
         <td><%= link_to "編輯", edit_post_path(post) %></td>
