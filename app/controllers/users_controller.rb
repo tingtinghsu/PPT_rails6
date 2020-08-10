@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    #byebug
     user = User.new(user_params)
     if user.save
       sign_in_user(user)
